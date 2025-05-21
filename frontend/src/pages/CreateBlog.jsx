@@ -6,7 +6,7 @@ const CreateBlog = () => {
   const [form, setForm] = useState({
     title: "",
     description: "",
-    image: "", // now a string (URL)
+    image: "",
   });
   const navigate = useNavigate();
 
@@ -34,7 +34,7 @@ const CreateBlog = () => {
     try {
       await axios.post(
         "http://localhost:5000/api/blogs",
-        { title, description, image }, // sending plain JSON
+        { title, description, image },
         {
           headers: {
             "Content-Type": "application/json",

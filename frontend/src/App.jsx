@@ -4,7 +4,7 @@ import Dashboard from "./pages/Dashboard";
 import CreateBlog from "./pages/CreateBlog";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-// import EditBlog if you're using it later
+import EditBlog from "./pages/EditBlog";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/create-blog" element={<CreateBlog />} />
-        {/* <Route path="/edit-blog/:id" element={<EditBlog />} /> */}
+        <Route path="/edit/:id" element={<EditBlog />} />
       </Routes>
     </Router>
   );

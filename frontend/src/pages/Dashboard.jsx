@@ -113,8 +113,8 @@ const Dashboard = () => {
               <td>{blog.description.slice(0, 100)}...</td>
               <td>
                 <button
-                  className="btn btn-sm btn-warning me-2"
-                  onClick={() => navigate(`/edit-blog/${blog._id}`)}
+                  className="btn btn-warning btn-sm"
+                  onClick={() => navigate(`/edit/${blog._id}`)}
                 >
                   Edit
                 </button>

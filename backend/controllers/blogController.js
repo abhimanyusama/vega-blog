@@ -39,7 +39,7 @@ export const getBlogById = async (req, res) => {
 
 export const updateBlog = async (req, res) => {
   try {
-    const { title, description } = req.body;
+    const { title, description, image } = req.body;
     const updateData = {
       title,
       description,
