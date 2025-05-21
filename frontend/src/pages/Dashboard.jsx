@@ -43,7 +43,7 @@ const Dashboard = () => {
       </div>
       <div>
         <img
-          src={`D:/vega/vega-blog/backend/${user.profileImage}`}
+          src={user.profileImage}
           alt="Profile"
           style={{ width: "100px", height: "100px", borderRadius: "50%" }}
         />
