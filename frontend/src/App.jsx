@@ -1,8 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Signup from "./pages/signup.jsx";
-import Login from "./pages/login.jsx";
-import Dashboard from "./pages/Dashboard.jsx"; // coming next
+import Dashboard from "./pages/Dashboard";
+import CreateBlog from "./pages/CreateBlog";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+// import EditBlog if you're using it later
 
 function App() {
   return (
@@ -11,6 +13,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/create-blog" element={<CreateBlog />} />
+        {/* <Route path="/edit-blog/:id" element={<EditBlog />} /> */}
       </Routes>
     </Router>
   );
