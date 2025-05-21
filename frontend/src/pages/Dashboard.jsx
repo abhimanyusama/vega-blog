@@ -13,21 +13,22 @@ const Dashboard = () => {
       return;
     }
 
-    // const fetchProfile = async () => {
-    //   try {
-    //     const res = await axios.get("http://localhost:5000/api/auth/me", {
-    //       headers: {
-    //         Authorization: `Bearer ${token}`,
-    //       },
-    //     });
-    //     setUser(res.data.user);
-    //   } catch (err) {
-    //     console.error(err);
-    //     alert("Session expired or invalid. Please login again.");
-    //     localStorage.removeItem("token");
-    //     navigate("/login");
-    //   }
-    // };
+    const fetchProfile = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/api/auth/profile", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        console.log("this is the result", res);
+        setUser(res.data);
+      } catch (err) {
+        console.error(err);
+        alert("Session expired or invalid. Please login again.");
+        localStorage.removeItem("token");
+        navigate("/login");
+      }
+    };
 
     fetchProfile();
   }, [navigate]);
@@ -42,7 +43,7 @@ const Dashboard = () => {
       </div>
       <div>
         <img
-          src={`http://localhost:5000/${user.image}`}
+          src={`D:/vega/vega-blog/backend/${user.profileImage}`}
           alt="Profile"
           style={{ width: "100px", height: "100px", borderRadius: "50%" }}
         />
