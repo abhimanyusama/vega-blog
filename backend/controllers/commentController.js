@@ -5,10 +5,10 @@ export const addComment = async (req, res) => {
     const { text, blogId, parentId } = req.body;
 
     const comment = new Comment({
-      text,
+      content: text,
       blog: blogId,
       user: req.user.id,
-      parent: parentId || null
+      parent: parentId || null,
     });
 
     await comment.save();
