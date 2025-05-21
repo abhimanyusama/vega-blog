@@ -32,7 +32,11 @@ const Dashboard = () => {
 
     const fetchBlogs = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/blogs");
+        const res = await axios.get("http://localhost:5000/api/blogs", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setBlogs(res.data);
       } catch (err) {
         console.error(err);
@@ -43,6 +47,7 @@ const Dashboard = () => {
     fetchProfile();
     fetchBlogs();
   }, [navigate]);
+  
 
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this blog?")) return;

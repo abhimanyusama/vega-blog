@@ -20,12 +20,13 @@ export const createBlog = async (req, res) => {
 
 export const getAllBlogs = async (req, res) => {
   try {
-    const blogs = await Blog.find();
+    const blogs = await Blog.find({ user: req.user.id });
     res.status(200).json(blogs);
   } catch (error) {
     res.status(500).json({ error: "Error fetching blogs" });
   }
 };
+
 
 export const getBlogById = async (req, res) => {
   try {
