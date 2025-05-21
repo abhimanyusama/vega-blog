@@ -28,6 +28,7 @@ export const getAllBlogs = async (req, res) => {
 };
 
 
+
 export const getBlogById = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id);
@@ -65,5 +66,14 @@ export const deleteBlog = async (req, res) => {
     res.status(200).json({ message: 'Blog deleted' });
   } catch (error) {
     res.status(500).json({ error: 'Error deleting blog' });
+  }
+};
+
+export const publicBlogs = async (req, res) => {
+  try {
+    const blogs = await Blog.find();
+    res.status(200).json(blogs);
+  } catch (error) {
+    res.status(500).json({ error: "Error fetching blogs" });
   }
 };
