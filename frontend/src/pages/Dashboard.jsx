@@ -34,7 +34,6 @@ const Dashboard = () => {
       try {
         const res = await axios.get("http://localhost:5000/api/blogs");
         setBlogs(res.data);
-        console.log("testing", res.data);
       } catch (err) {
         console.error(err);
         alert("Failed to load blogs.");
@@ -63,6 +62,11 @@ const Dashboard = () => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+
   if (!user) return <div className="container mt-5">Loading...</div>;
 
   return (
@@ -73,12 +77,21 @@ const Dashboard = () => {
           <h2>Welcome, {user.email}</h2>
           <p>This is your dashboard.</p>
         </div>
-        <div>
+        <div className="text-end">
           <img
             src={user.profileImage}
             alt="Profile"
             style={{ width: "100px", height: "100px", borderRadius: "50%" }}
+            className="mb-2"
           />
+          <div>
+            <button
+              className="btn btn-outline-danger btn-sm"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          </div>
         </div>
       </div>
 
@@ -113,7 +126,7 @@ const Dashboard = () => {
               <td>{blog.description.slice(0, 100)}...</td>
               <td>
                 <button
-                  className="btn btn-warning btn-sm"
+                  className="btn btn-warning btn-sm me-2"
                   onClick={() => navigate(`/edit/${blog._id}`)}
                 >
                   Edit

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { login } from "../services/api";
 
 const Login = () => {
@@ -52,6 +52,12 @@ const Login = () => {
               Login
             </button>
           </form>
+
+          <div className="text-center">
+            <p className="mt-2">
+              Don't have an account? <Link to="/signup">Sign up</Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>

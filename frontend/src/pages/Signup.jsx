@@ -1,33 +1,25 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { signup } from "../services/api";
 
 const Signup = () => {
   const [form, setForm] = useState({
     email: "",
     password: "",
-    profileImage: null,
+    profileImage: "", // Now storing image URL as string
   });
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    if (name === "profileImage") {
-      setForm({ ...form, profileImage: files[0] });
-    } else {
-      setForm({ ...form, [name]: value });
-    }
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = new FormData();
-    data.append("email", form.email);
-    data.append("password", form.password);
-    data.append("profileImage", form.profileImage);
 
     try {
-      await signup(data);
+      await signup(form); // Send form as JSON (not FormData)
       alert("Signup successful!");
       navigate("/login");
     } catch (err) {
@@ -36,11 +28,11 @@ const Signup = () => {
   };
 
   return (
-    <div className="container mt-5 ">
+    <div className="container mt-5">
       <div className="row d-flex align-items-center">
-        <div className="col-md-4 mx-auto p-3 border rounded-3 justify-content-center ">
+        <div className="col-md-4 mx-auto p-3 border rounded-3 justify-content-center">
           <h2 className="text-center">Sign Up</h2>
-          <form onSubmit={handleSubmit} encType="multipart/form-data">
+          <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label>Email</label>
               <input
@@ -62,10 +54,11 @@ const Signup = () => {
               />
             </div>
             <div className="mb-3">
-              <label>Profile Image</label>
+              <label>Profile Image URL</label>
               <input
-                type="file"
+                type="text"
                 name="profileImage"
+                placeholder="https://example.com/image.jpg"
                 className="form-control"
                 onChange={handleChange}
                 required
@@ -74,8 +67,13 @@ const Signup = () => {
             <button className="btn btn-primary w-100 my-3" type="submit">
               Sign Up
             </button>
-            
           </form>
+
+          <div className="text-center">
+            <p className="mt-2">
+              Already have an account? <Link to="/login">Login</Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>

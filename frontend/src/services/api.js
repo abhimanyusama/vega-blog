@@ -4,10 +4,8 @@ const API = axios.create({
   baseURL: "http://localhost:5000/api",
 });
 
-export const signup = (formData) =>
-  API.post("/auth/signup", formData, {
-    headers: { "Content-Type": "multipart/form-data" },
-  });
+export const signup = (formData) => API.post("/auth/signup", formData); 
+
 
 export const login = (data) => API.post("/auth/login", data);
 // Add these blog API functions
