@@ -13,21 +13,21 @@ const Dashboard = () => {
       return;
     }
 
-    const fetchProfile = async () => {
-      try {
-        const res = await axios.get("http://localhost:5000/api/auth/me", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setUser(res.data.user);
-      } catch (err) {
-        console.error(err);
-        alert("Session expired or invalid. Please login again.");
-        localStorage.removeItem("token");
-        navigate("/login");
-      }
-    };
+    // const fetchProfile = async () => {
+    //   try {
+    //     const res = await axios.get("http://localhost:5000/api/auth/me", {
+    //       headers: {
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //     });
+    //     setUser(res.data.user);
+    //   } catch (err) {
+    //     console.error(err);
+    //     alert("Session expired or invalid. Please login again.");
+    //     localStorage.removeItem("token");
+    //     navigate("/login");
+    //   }
+    // };
 
     fetchProfile();
   }, [navigate]);

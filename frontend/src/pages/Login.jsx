@@ -24,32 +24,36 @@ const Login = () => {
 
   return (
     <div className="container mt-5">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            className="form-control"
-            onChange={handleChange}
-            required
-          />
+      <div className="row">
+        <div className="col-md-4 py-3 mx-auto border rounded-3">
+          <h2 className="text-center">Login</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label>Email</label>
+              <input
+                type="email"
+                name="email"
+                className="form-control"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label>Password</label>
+              <input
+                type="password"
+                name="password"
+                className="form-control"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <button className="btn btn-primary my-3 w-100" type="submit">
+              Login
+            </button>
+          </form>
         </div>
-        <div className="mb-3">
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            className="form-control"
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button className="btn btn-success" type="submit">
-          Login
-        </button>
-      </form>
+      </div>
     </div>
   );
 };

@@ -36,43 +36,48 @@ const Signup = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <div className="mb-3">
-          <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            className="form-control"
-            onChange={handleChange}
-            required
-          />
+    <div className="container mt-5 ">
+      <div className="row d-flex align-items-center">
+        <div className="col-md-4 mx-auto p-3 border rounded-3 justify-content-center ">
+          <h2 className="text-center">Sign Up</h2>
+          <form onSubmit={handleSubmit} encType="multipart/form-data">
+            <div className="mb-3">
+              <label>Email</label>
+              <input
+                type="email"
+                name="email"
+                className="form-control"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label>Password</label>
+              <input
+                type="password"
+                name="password"
+                className="form-control"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label>Profile Image</label>
+              <input
+                type="file"
+                name="profileImage"
+                className="form-control"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <button className="btn btn-primary w-100 my-3" type="submit">
+              Sign Up
+            </button>
+            
+          </form>
         </div>
-        <div className="mb-3">
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            className="form-control"
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label>Profile Image</label>
-          <input
-            type="file"
-            name="profileImage"
-            className="form-control"
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button className="btn btn-primary" type="submit">
-          Sign Up
-        </button>
-      </form>
+      </div>
     </div>
   );
 };
