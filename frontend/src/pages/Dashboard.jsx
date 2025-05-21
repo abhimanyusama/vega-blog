@@ -34,6 +34,7 @@ const Dashboard = () => {
       try {
         const res = await axios.get("http://localhost:5000/api/blogs");
         setBlogs(res.data);
+        console.log("testing", res.data);
       } catch (err) {
         console.error(err);
         alert("Failed to load blogs.");
@@ -107,11 +108,7 @@ const Dashboard = () => {
             <tr key={blog._id}>
               <td>{blog.title}</td>
               <td>
-                <img
-                  src={`http://localhost:5000/${blog.image}`}
-                  alt="Blog"
-                  style={{ width: "100px" }}
-                />
+                <img src={blog.image} alt="Blog" style={{ width: "100px" }} />
               </td>
               <td>{blog.description.slice(0, 100)}...</td>
               <td>
